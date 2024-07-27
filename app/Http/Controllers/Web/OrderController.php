@@ -119,7 +119,7 @@ class OrderController extends Controller
         ]);
 
         // Find the order by ID
-        $order = Orders::find($request->id);
+        $order = Orders::where(['id' => $request->id, 'user_id' => auth()->user()->id])->first();
 
         if ($order) {
             DB::beginTransaction();

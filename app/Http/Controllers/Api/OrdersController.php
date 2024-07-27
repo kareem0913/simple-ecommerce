@@ -249,7 +249,7 @@ class OrdersController extends Controller
             return $this->sendRes('error', false, $validator->errors(), 400);
         }
 
-        $order = Orders::where('id', $id)->first();
+        $order = Orders::where(['id' => $id, 'user_id' => auth()->user()->id])->first();
 
         if ($order) {
             DB::beginTransaction();
