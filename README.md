@@ -80,7 +80,7 @@ This project is a simple e-commerce application built with Laravel. It includes 
 10. **Run database seeders:**
     
     ```bash
-     php artisan db::seed
+     php artisan db:seed
     
 11. **Start the development server:**
     
