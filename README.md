@@ -55,7 +55,7 @@ This project is a simple e-commerce application built with Laravel. It includes 
     npm insatll
    
 4. **Configure your `.env` file with necessary environment variables, and make sure about env variable 
-   APP_URL=http://localhost:8000 or your online server**
+   `APP_URL=http://localhost:8000` or your online server**
 
 6. **generate key for laravel app:**
    
