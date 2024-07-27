@@ -66,7 +66,12 @@ This project is a simple e-commerce application built with Laravel. It includes 
    ```bash
    php artisan jwt:secret
    
-7.**Run database migrations:**
+7. **Run database migrations:**
 
   ```bash
    php artisan migrate
+
+7. **Run database migrations:**
+
+
+
