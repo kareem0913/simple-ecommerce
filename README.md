@@ -42,6 +42,11 @@ This project is a simple e-commerce application built with Laravel. It includes 
 - A web server (e.g., Apache, Nginx)
 - A database (e.g., MySQL, PostgreSQL)
 
+  ## Important Notice
+   this project handle webhooks endpoint with webhooks site so you must open this site <a href="https://webhook.site" >  and get your unique url
+    , for example like `https://webhook.site/fb8b592c-73e1-40cf-a393-ed0468523589` and you must add your unique url in .env file with this variable `WEB_HOOKS_URL`
+
+
 ### Installation and Runing the project
 
 1. **Clone the repository:** 
