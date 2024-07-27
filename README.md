@@ -47,20 +47,26 @@ This project is a simple e-commerce application built with Laravel. It includes 
 1. **Clone the repository:** 
    ```bash
    git clone <git@github.com:kareem0913/simple-ecommerce.git>
-2. **Install dependencies:** 
+   
+2. **Install dependencies:**
+
    ```bash
     composer install
     npm insatll
-3. **Configure your `.env` file with necessary environment variables.**
-4. **generate key for laravel app:**
+   
+4. **Configure your `.env` file with necessary environment variables.**
+
+6. **generate key for laravel app:**
+   
    ```bash
    php artisan key:generate
-6. **generate jwt secret key in `.env` file:**
+   
+8. **generate jwt secret key in `.env` file:**
+
    ```bash
    php artisan jwt:secret
+   
 7.**Run database migrations:**
+
   ```bash
    php artisan migrate
-
-
-
