@@ -108,48 +108,12 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        // $validator = Validator::make($request->all(), [
-        //     'status' => ['required', 'in:pending,processing,shipped,completed,cancelled']
-        // ]);
 
-        // if ($validator->fails()) {
-
-        //     return $this->sendRes('error', false, $validator->errors(), 400);
-        // }
-
-        $validator = $request->validate([
-            'status' => ['required', 'in:pending,processing,shipped,completed,cancelled']
-        ]);
-
-        $order = Orders::where('id', $id)->first();
-
-        if ($order) {
-            DB::beginTransaction();
-            try {
-                $order->update(['status' => $request->status]);
-
-                //TODO -  implement webhooks
-                try {
-                    $res = $this->webHooksService->orderStatus([$order->id, $request->status]);
-                    DB::commit();
-                    return $this->sendRes('success', true, $order, 201);
-                } catch (\Exception $e) {
-                    return $this->sendRes('errror', false, $e->getMessage(), 500);
-                }
-            } catch (\Exception $e) {
-                return $this->sendRes('errror', false, $e->getMessage(), 500);
-            }
-        } else {
-            return $this->sendRes('error', false, 'there is no order', 404);
-        }
-    }
 
     public function changeOrderStatus(Request $request)
     {
         // Validate the request data
-        $validator = $request->validate([
+        $request->validate([
             'id' => ['required', 'integer', 'exists:orders,id'],
             'status' => ['required', 'in:pending,processing,shipped,completed,cancelled'],
         ]);
@@ -168,25 +132,26 @@ class OrderController extends Controller
                     $res = $this->webHooksService->orderStatus([$order->id, $request->status]);
                     DB::commit();
 
-                    // Return a JSON response for success
-                    return response()->json(['success' => true, 'message' => 'Order status updated successfully']);
+                    // Redirect with success message
+                    return redirect()->back()->with('success', 'Order status updated successfully');
                 } catch (\Exception $e) {
                     DB::rollBack();
 
-                    // Return a JSON response for webhook failure
-                    return response()->json(['success' => false, 'message' => 'Failed to send webhook: ' . $e->getMessage()], 500);
+                    // Redirect with error message
+                    return redirect()->back()->withErrors(['Failed to send webhook: ' . $e->getMessage()]);
                 }
             } catch (\Exception $e) {
                 DB::rollBack();
 
-                // Return a JSON response for update failure
-                return response()->json(['success' => false, 'message' => 'Failed to update order status: ' . $e->getMessage()], 500);
+                // Redirect with error message
+                return redirect()->back()->withErrors(['Failed to update order status: ' . $e->getMessage()]);
             }
         } else {
-            // Return a JSON response if order not found
-            return response()->json(['success' => false, 'message' => 'Order not found'], 404);
+            // Redirect with error message if order not found
+            return redirect()->back()->withErrors(['Order not found']);
         }
     }
+
 
 
     /**
