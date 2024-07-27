@@ -54,24 +54,38 @@ This project is a simple e-commerce application built with Laravel. It includes 
     composer install
     npm insatll
    
-4. **Configure your `.env` file with necessary environment variables.**
+4. **Configure your `.env` file with necessary environment variables, and make sure about env variable 
+   APP_URL=http://localhost:8000 or your online server**
 
 6. **generate key for laravel app:**
    
    ```bash
    php artisan key:generate
    
-8. **generate jwt secret key in `.env` file:**
+7. **generate jwt secret key in `.env` file:**
 
    ```bash
    php artisan jwt:secret
    
-7. **Run database migrations:**
+8. **create storage path link:**
 
-  ```bash
-   php artisan migrate
-
-7. **Run database migrations:**
-
-
-
+   ```bash
+    php artisan storage:link
+     
+9. **Run database migrations:**
+   
+    ```bash
+     php artisan migrate
+    
+10. **Run database seeders:**
+    
+    ```bash
+     php artisan db::seed
+    
+11. **Start the development server:**
+    
+    ```bash
+    php artisan serve
+    npm run dev
+    
+12.**you can access swagger api endpoint with `http://localhost:8000/api/documentation`**
