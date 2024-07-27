@@ -1,0 +1,55 @@
+/**
+     * @OA\Post(
+     *      path="/api/v1/products",
+     *      summary="Create a new product",
+     *      description="Creates a new product",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(ref="#/components/schemas/ProductRequest")
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Created",
+     *          @OA\JsonContent(ref="#/components/schemas/Product")
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthorized",
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Content",
+     *      )
+     *  )
+     */
+
+
+      /**
+     * @OA\Get(
+     *      path="/api/v1/products/{id}",
+     *      summary="Get a product by ID",
+     *      description="Returns a product by ID",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          description="ID of the product",
+     *          @OA\Schema(
+     *              type="integer",
+     *              format="int64"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/Product")
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthorized",
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Not Found",
+     *      )
+     *  )
+     */
