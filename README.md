@@ -24,7 +24,7 @@ This project is a simple e-commerce application built with Laravel. It includes 
 
 ## Features
 
-- User Registration with jwt for api , and built in laravel for web view.
+- User Registration with jwt for api , and auth built in laravel for web view.
 - User Login and Logout
 - CRUD operations for products.
 - RESTful API endpoints for all features
